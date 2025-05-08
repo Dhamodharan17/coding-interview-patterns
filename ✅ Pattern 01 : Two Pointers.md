@@ -126,3 +126,25 @@ class Solution:
         # return head
         return res.next
 ```
+**4. Sort colors**
+```python
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        n = len(nums)
+        a = b = 0
+        c = n - 1
+
+        while a <= c:
+            if nums[a] == 2:
+                nums[a], nums[c] = nums[c], nums[a]
+                # 2 push to end
+                c -= 1
+            
+            # Do not increment `a` here because the new `nums[a]` could be 0 or 1
+            elif nums[a] == 0:
+                nums[a], nums[b] = nums[b], nums[a]
+                b += 1
+                a += 1
+            else:  # nums[a] == 1
+                a += 1
+```
