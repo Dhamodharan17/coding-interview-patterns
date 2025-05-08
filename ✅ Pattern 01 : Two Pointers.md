@@ -78,3 +78,30 @@ class Solution:
         
         return res
 ```
+**Remove Nth Node from End of List**
+```python
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+
+        fast = head
+        for _ in range(n):
+            # no need to delete case
+            if not fast:
+                return head
+            fast = fast.next
+        
+        #single node case
+        if not fast:
+            return head.next
+
+        slow = head
+        #maintain a gap of n and stop last node
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next
+
+        #delete 
+        slow.next = slow.next.next
+        
+        return head 
+```
